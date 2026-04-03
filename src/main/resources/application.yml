@@ -1,0 +1,91 @@
+# Default profile (can be used for common config)
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: qa  # Change to dev/prod as needed
+
+---
+
+# DEV profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restapi-dev
+    username: postgres
+    password: anitha
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+welcome:
+  message: "Welcome to Anitha coding practice !!"
+
+---
+
+# QA profile
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restapi-qa
+    username: postgres
+    password: anitha
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+welcome:
+  message: "Welcome to Anitha coding practice !!"
+
+---
+
+# PROD profile
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/restapi-prod
+    username: postgres
+    password: anitha
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+welcome:
+  message: "Welcome to Anitha coding practice !!"
